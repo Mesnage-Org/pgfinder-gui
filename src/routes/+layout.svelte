@@ -7,6 +7,8 @@
 	import '../app.postcss';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { AppShell, AppBar, storePopup } from '@skeletonlabs/skeleton';
+	import Fa from 'svelte-fa/src/fa.svelte';
+	import { faBars } from '@fortawesome/free-solid-svg-icons';
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 </script>
 
@@ -14,10 +16,9 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar>
-			<svelte:fragment slot="lead">
-				<strong class="text-xl">PGFinder</strong>
-			</svelte:fragment>
+		<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+			<svelte:fragment slot="lead"><Fa icon={faBars} /></svelte:fragment>
+			<strong class="text-xl">PGFinder</strong>
 			<svelte:fragment slot="trail">
 				<a
 					class="btn btn-sm variant-ghost-surface"
@@ -32,4 +33,14 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+	<svelte:fragment slot="footer">
+		<div class="flex justify-center">
+			<p class="text-center w-full">
+				Any issues or suggestions? Please get in touch!<br />
+				<a href="mailto:smesnage@sheffield.ac.uk"
+					><strong class="">smesnage@sheffield.ac.uk</strong></a
+				>
+			</p>
+		</div>
+	</svelte:fragment>
 </AppShell>
